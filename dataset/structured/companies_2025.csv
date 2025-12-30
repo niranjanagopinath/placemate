@@ -1,0 +1,60 @@
+company_id,company_name,company_type,role,batch_year,min_cgpa,allowed_backlogs,allowed_branches,ctc_lpa,base_lpa,selection_rounds,location
+
+C001,TCS,Service,Software Engineer,2025,6.5,1,"CSE,IT,ECE",7.0,3.6,"Aptitude,Coding,Technical,HR",Multiple
+C002,TCS,Service,System Engineer,2025,6.0,1,"CSE,IT,ECE,EEE",6.5,3.2,"Aptitude,Technical,HR",Multiple
+C003,TCS,Service,Digital Engineer,2025,7.5,0,"CSE,IT",9.0,4.5,"Coding,Technical,HR",Bangalore
+
+C004,Infosys,Service,SE,2025,6.5,1,"CSE,IT,ECE",7.0,3.8,"Aptitude,Coding,HR",Multiple
+C005,Infosys,Service,Digital Specialist Engineer,2025,7.0,0,"CSE,IT,ECE",10.0,5.0,"Coding,Technical,HR",Bangalore
+C006,Infosys,Service,Power Programmer,2025,7.5,0,"CSE,IT",12.0,6.0,"Coding,DSA,Technical",Bangalore
+
+C007,Wipro,Service,Project Engineer,2025,6.0,1,"CSE,IT,ECE,EEE",4.5,3.5,"Aptitude,Technical,HR",Multiple
+C008,Wipro,Service,TalentNext Engineer,2025,7.0,0,"CSE,IT,ECE",8.0,4.2,"Coding,Technical,HR",Bangalore
+
+C009,Accenture,Service,Associate Software Engineer,2025,6.0,1,"CSE,IT,ECE,EEE",4.5,3.8,"Aptitude,Coding,HR",Multiple
+C010,Accenture,Service,Advanced ASE,2025,7.0,0,"CSE,IT,ECE",6.8,4.5,"Coding,Technical,HR",Bangalore
+
+C011,Cognizant,Service,Programmer Analyst,2025,6.5,1,"CSE,IT,ECE",5.5,4.0,"Coding,Technical,HR",Chennai
+C012,Cognizant,Service,GenC Next,2025,7.2,0,"CSE,IT",8.0,5.2,"Coding,Technical,HR",Bangalore
+
+C013,Capgemini,Service,Analyst,2025,6.0,1,"CSE,IT,ECE,EEE",4.0,3.2,"Aptitude,HR",Multiple
+C014,Capgemini,Service,Senior Analyst,2025,7.0,0,"CSE,IT,ECE",7.5,4.8,"Coding,Technical,HR",Bangalore
+
+C015,IBM,Service,Software Developer,2025,6.5,1,"CSE,IT,ECE",6.0,4.0,"Coding,Technical,HR",Multiple
+C016,IBM,Service,Data Engineer,2025,7.2,0,"CSE,IT",9.5,6.0,"Coding,Technical",Bangalore
+
+C017,HCL,Service,Graduate Engineer,2025,6.0,1,"CSE,IT,ECE",4.2,3.1,"Aptitude,HR",Multiple
+C018,Tech Mahindra,Service,Associate Engineer,2025,6.0,1,"CSE,IT,ECE,EEE",4.0,3.0,"Aptitude,HR",Multiple
+
+C019,Amazon,Product,SDE-1,2025,8.0,0,"CSE,IT",44.0,18.0,"Coding,DSA,System Design,HR",Bangalore
+C020,Amazon,Product,Cloud Support Associate,2025,7.0,0,"CSE,IT,ECE",14.0,8.0,"Technical,HR",Hyderabad
+
+C021,Google,Product,Software Engineer,2025,8.5,0,"CSE,IT",50.0,20.0,"Coding,DSA,System Design,Googliness",Bangalore
+C022,Google,Product,STEP Intern,2025,8.0,0,"CSE,IT",20.0,10.0,"Coding,Technical",Bangalore
+
+C023,Microsoft,Product,Software Engineer,2025,8.0,0,"CSE,IT",42.0,16.0,"Coding,DSA,System Design,HR",Hyderabad
+C024,Microsoft,Product,Support Engineer,2025,7.0,0,"CSE,IT,ECE",12.0,7.0,"Technical,HR",Hyderabad
+
+C025,Adobe,Product,Member Technical Staff,2025,7.5,0,"CSE,IT",30.0,15.0,"Coding,DSA,Technical,HR",Noida
+C026,Intuit,Product,Software Engineer,2025,7.5,0,"CSE,IT",28.0,14.0,"Coding,DSA,System Design",Bangalore
+
+C027,Flipkart,Product,SDE-1,2025,8.0,0,"CSE,IT",32.0,16.0,"Coding,DSA,System Design,HR",Bangalore
+C028,Meesho,Startup,Backend Engineer,2025,7.0,1,"CSE,IT",20.0,11.0,"Coding,Technical",Bangalore
+
+C029,Zomato,Startup,Software Engineer,2025,7.0,1,"CSE,IT,ECE",18.0,10.0,"Coding,Technical,HR",Remote
+C030,Swiggy,Startup,Backend Engineer,2025,7.5,0,"CSE,IT",25.0,12.0,"Coding,DSA,System Design",Bangalore
+
+C031,Zoho,Product,Member Technical Staff,2025,6.5,0,"CSE,IT,ECE",10.0,8.0,"Coding,Technical,HR",Chennai
+C032,Freshworks,Product,Software Engineer,2025,6.5,0,"CSE,IT,ECE",12.0,8.0,"Coding,Technical,HR",Chennai
+
+C033,Oracle,Product,Associate Consultant,2025,7.0,0,"CSE,IT",14.0,9.0,"Technical,HR",Bangalore
+C034,Paytm,Startup,Software Engineer,2025,7.0,1,"CSE,IT",15.0,9.0,"Coding,Technical",Noida
+
+C035,Razorpay,Startup,Backend Engineer,2025,7.5,0,"CSE,IT",22.0,12.0,"Coding,DSA,System Design",Bangalore
+C036,PhonePe,Startup,Software Engineer,2025,7.5,0,"CSE,IT",24.0,13.0,"Coding,DSA,Technical",Bangalore
+
+C037,Byju’s,Startup,Software Engineer,2025,6.5,1,"CSE,IT,ECE",10.0,6.5,"Coding,Technical,HR",Bangalore
+C038,Unacademy,Startup,Backend Engineer,2025,7.0,1,"CSE,IT",16.0,9.0,"Coding,Technical",Bangalore
+
+C039,Deloitte,Service,Analyst,2025,6.5,1,"CSE,IT,ECE",6.8,4.2,"Aptitude,Technical,HR",Multiple
+C040,KPMG,Service,Technology Analyst,2025,6.5,1,"CSE,IT,ECE",7.2,4.5,"Technical,HR",Multiple
