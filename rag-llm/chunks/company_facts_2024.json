@@ -1,0 +1,522 @@
+[
+  {
+    "text": "Company: TCS\nRole: Software Engineer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.5\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 6.8 LPA\n- Base Salary: 3.5 LPA\n\nSelection Rounds:\n- Aptitude, Coding, Technical, HR\n\nJob Location: Multiple",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C001",
+      "company": "TCS",
+      "role": "Software Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: TCS\nRole: System Engineer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.0\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE,EEE\n\nCompensation:\n- CTC: 6.2 LPA\n- Base Salary: 3.0 LPA\n\nSelection Rounds:\n- Aptitude, Technical, HR\n\nJob Location: Multiple",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C002",
+      "company": "TCS",
+      "role": "System Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: TCS\nRole: Digital Engineer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 7.5\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 8.8 LPA\n- Base Salary: 4.3 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C003",
+      "company": "TCS",
+      "role": "Digital Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Infosys\nRole: SE\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.5\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 6.5 LPA\n- Base Salary: 3.6 LPA\n\nSelection Rounds:\n- Aptitude, Coding, HR\n\nJob Location: Multiple",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C004",
+      "company": "Infosys",
+      "role": "SE",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Infosys\nRole: Digital Specialist Engineer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 7.0\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 9.5 LPA\n- Base Salary: 4.8 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C005",
+      "company": "Infosys",
+      "role": "Digital Specialist Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Infosys\nRole: Power Programmer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 7.5\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 11.5 LPA\n- Base Salary: 5.8 LPA\n\nSelection Rounds:\n- Coding, DSA, Technical\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C006",
+      "company": "Infosys",
+      "role": "Power Programmer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Wipro\nRole: Project Engineer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.0\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE,EEE\n\nCompensation:\n- CTC: 4.3 LPA\n- Base Salary: 3.4 LPA\n\nSelection Rounds:\n- Aptitude, Technical, HR\n\nJob Location: Multiple",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C007",
+      "company": "Wipro",
+      "role": "Project Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Wipro\nRole: TalentNext Engineer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 7.0\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 7.5 LPA\n- Base Salary: 4.0 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C008",
+      "company": "Wipro",
+      "role": "TalentNext Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Accenture\nRole: Associate Software Engineer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.0\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE,EEE\n\nCompensation:\n- CTC: 4.2 LPA\n- Base Salary: 3.6 LPA\n\nSelection Rounds:\n- Aptitude, Coding, HR\n\nJob Location: Multiple",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C009",
+      "company": "Accenture",
+      "role": "Associate Software Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Accenture\nRole: Advanced ASE\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 7.0\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 6.5 LPA\n- Base Salary: 4.2 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C010",
+      "company": "Accenture",
+      "role": "Advanced ASE",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Cognizant\nRole: Programmer Analyst\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.5\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 5.2 LPA\n- Base Salary: 3.9 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Chennai",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C011",
+      "company": "Cognizant",
+      "role": "Programmer Analyst",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Cognizant\nRole: GenC Next\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 7.2\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 7.8 LPA\n- Base Salary: 5.0 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C012",
+      "company": "Cognizant",
+      "role": "GenC Next",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Capgemini\nRole: Analyst\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.0\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE,EEE\n\nCompensation:\n- CTC: 3.9 LPA\n- Base Salary: 3.1 LPA\n\nSelection Rounds:\n- Aptitude, HR\n\nJob Location: Multiple",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C013",
+      "company": "Capgemini",
+      "role": "Analyst",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Capgemini\nRole: Senior Analyst\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 7.0\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 7.0 LPA\n- Base Salary: 4.6 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C014",
+      "company": "Capgemini",
+      "role": "Senior Analyst",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: IBM\nRole: Software Developer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.5\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 5.8 LPA\n- Base Salary: 3.9 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Multiple",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C015",
+      "company": "IBM",
+      "role": "Software Developer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: IBM\nRole: Data Engineer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 7.2\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 9.0 LPA\n- Base Salary: 5.8 LPA\n\nSelection Rounds:\n- Coding, Technical\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C016",
+      "company": "IBM",
+      "role": "Data Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: HCL\nRole: Graduate Engineer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.0\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 4.0 LPA\n- Base Salary: 3.0 LPA\n\nSelection Rounds:\n- Aptitude, HR\n\nJob Location: Multiple",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C017",
+      "company": "HCL",
+      "role": "Graduate Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Tech Mahindra\nRole: Associate Engineer\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.0\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE,EEE\n\nCompensation:\n- CTC: 3.8 LPA\n- Base Salary: 2.9 LPA\n\nSelection Rounds:\n- Aptitude, HR\n\nJob Location: Multiple",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C018",
+      "company": "Tech Mahindra",
+      "role": "Associate Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Amazon\nRole: SDE-1\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 8.0\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 42.0 LPA\n- Base Salary: 17.0 LPA\n\nSelection Rounds:\n- Coding, DSA, System Design, HR\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C019",
+      "company": "Amazon",
+      "role": "SDE-1",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Amazon\nRole: Cloud Support Associate\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 7.0\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 13.0 LPA\n- Base Salary: 7.5 LPA\n\nSelection Rounds:\n- Technical, HR\n\nJob Location: Hyderabad",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C020",
+      "company": "Amazon",
+      "role": "Cloud Support Associate",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Google\nRole: Software Engineer\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 8.5\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 48.0 LPA\n- Base Salary: 19.0 LPA\n\nSelection Rounds:\n- Coding, DSA, System Design, Googliness\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C021",
+      "company": "Google",
+      "role": "Software Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Google\nRole: STEP Intern\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 8.0\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 18.0 LPA\n- Base Salary: 9.0 LPA\n\nSelection Rounds:\n- Coding, Technical\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C022",
+      "company": "Google",
+      "role": "STEP Intern",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Microsoft\nRole: Software Engineer\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 8.0\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 40.0 LPA\n- Base Salary: 15.5 LPA\n\nSelection Rounds:\n- Coding, DSA, System Design, HR\n\nJob Location: Hyderabad",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C023",
+      "company": "Microsoft",
+      "role": "Software Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Microsoft\nRole: Support Engineer\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 7.0\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 11.5 LPA\n- Base Salary: 6.8 LPA\n\nSelection Rounds:\n- Technical, HR\n\nJob Location: Hyderabad",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C024",
+      "company": "Microsoft",
+      "role": "Support Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Adobe\nRole: Member Technical Staff\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 7.5\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 28.0 LPA\n- Base Salary: 14.0 LPA\n\nSelection Rounds:\n- Coding, DSA, Technical, HR\n\nJob Location: Noida",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C025",
+      "company": "Adobe",
+      "role": "Member Technical Staff",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Intuit\nRole: Software Engineer\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 7.5\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 26.0 LPA\n- Base Salary: 13.0 LPA\n\nSelection Rounds:\n- Coding, DSA, System Design\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C026",
+      "company": "Intuit",
+      "role": "Software Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Flipkart\nRole: SDE-1\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 8.0\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 30.0 LPA\n- Base Salary: 15.0 LPA\n\nSelection Rounds:\n- Coding, DSA, System Design, HR\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C027",
+      "company": "Flipkart",
+      "role": "SDE-1",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Meesho\nRole: Backend Engineer\nBatch Year: 2024\nCompany Type: Startup\n\nEligibility Criteria:\n- Minimum CGPA: 7.0\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 18.0 LPA\n- Base Salary: 10.0 LPA\n\nSelection Rounds:\n- Coding, Technical\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C028",
+      "company": "Meesho",
+      "role": "Backend Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Zomato\nRole: Software Engineer\nBatch Year: 2024\nCompany Type: Startup\n\nEligibility Criteria:\n- Minimum CGPA: 7.0\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 16.5 LPA\n- Base Salary: 9.5 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Remote",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C029",
+      "company": "Zomato",
+      "role": "Software Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Swiggy\nRole: Backend Engineer\nBatch Year: 2024\nCompany Type: Startup\n\nEligibility Criteria:\n- Minimum CGPA: 7.5\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 23.0 LPA\n- Base Salary: 11.0 LPA\n\nSelection Rounds:\n- Coding, DSA, System Design\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C030",
+      "company": "Swiggy",
+      "role": "Backend Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Zoho\nRole: Member Technical Staff\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 6.5\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 9.5 LPA\n- Base Salary: 7.5 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Chennai",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C031",
+      "company": "Zoho",
+      "role": "Member Technical Staff",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Freshworks\nRole: Software Engineer\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 6.5\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 11.0 LPA\n- Base Salary: 7.5 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Chennai",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C032",
+      "company": "Freshworks",
+      "role": "Software Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Oracle\nRole: Associate Consultant\nBatch Year: 2024\nCompany Type: Product\n\nEligibility Criteria:\n- Minimum CGPA: 7.0\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 13.0 LPA\n- Base Salary: 8.5 LPA\n\nSelection Rounds:\n- Technical, HR\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C033",
+      "company": "Oracle",
+      "role": "Associate Consultant",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Paytm\nRole: Software Engineer\nBatch Year: 2024\nCompany Type: Startup\n\nEligibility Criteria:\n- Minimum CGPA: 7.0\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 14.0 LPA\n- Base Salary: 8.5 LPA\n\nSelection Rounds:\n- Coding, Technical\n\nJob Location: Noida",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C034",
+      "company": "Paytm",
+      "role": "Software Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Razorpay\nRole: Backend Engineer\nBatch Year: 2024\nCompany Type: Startup\n\nEligibility Criteria:\n- Minimum CGPA: 7.5\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 20.0 LPA\n- Base Salary: 11.0 LPA\n\nSelection Rounds:\n- Coding, DSA, System Design\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C035",
+      "company": "Razorpay",
+      "role": "Backend Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: PhonePe\nRole: Software Engineer\nBatch Year: 2024\nCompany Type: Startup\n\nEligibility Criteria:\n- Minimum CGPA: 7.5\n- Allowed Backlogs: 0\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 22.0 LPA\n- Base Salary: 12.0 LPA\n\nSelection Rounds:\n- Coding, DSA, Technical\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C036",
+      "company": "PhonePe",
+      "role": "Software Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Byju\u2019s\nRole: Software Engineer\nBatch Year: 2024\nCompany Type: Startup\n\nEligibility Criteria:\n- Minimum CGPA: 6.5\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 9.0 LPA\n- Base Salary: 6.0 LPA\n\nSelection Rounds:\n- Coding, Technical, HR\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C037",
+      "company": "Byju\u2019s",
+      "role": "Software Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Unacademy\nRole: Backend Engineer\nBatch Year: 2024\nCompany Type: Startup\n\nEligibility Criteria:\n- Minimum CGPA: 7.0\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT\n\nCompensation:\n- CTC: 15.0 LPA\n- Base Salary: 8.8 LPA\n\nSelection Rounds:\n- Coding, Technical\n\nJob Location: Bangalore",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C038",
+      "company": "Unacademy",
+      "role": "Backend Engineer",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: Deloitte\nRole: Analyst\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.5\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 6.5 LPA\n- Base Salary: 4.0 LPA\n\nSelection Rounds:\n- Aptitude, Technical, HR\n\nJob Location: Multiple",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C039",
+      "company": "Deloitte",
+      "role": "Analyst",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  },
+  {
+    "text": "Company: KPMG\nRole: Technology Analyst\nBatch Year: 2024\nCompany Type: Service\n\nEligibility Criteria:\n- Minimum CGPA: 6.5\n- Allowed Backlogs: 1\n- Eligible Branches: CSE,IT,ECE\n\nCompensation:\n- CTC: 6.8 LPA\n- Base Salary: 4.2 LPA\n\nSelection Rounds:\n- Technical, HR\n\nJob Location: Multiple",
+    "metadata": {
+      "knowledge_type": "company_facts",
+      "company_id": "Y24C040",
+      "company": "KPMG",
+      "role": "Technology Analyst",
+      "batch_year": 2024,
+      "topic": "eligibility_and_package",
+      "authority": "conditional",
+      "source_file": "dataset/structured\\companies_2024.csv"
+    }
+  }
+]

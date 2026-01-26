@@ -1,0 +1,13 @@
+[
+  {
+    "text": "Placement Summary – Batch 2024:\n\n- Total number of students eligible for placement: 820\n- Total number of students placed: 760\n- Highest CTC offered: 52 LPA (Product Company)\n- Average CTC offered: 8.2 LPA\n\nRecruiter distribution:\n- Service companies recruited 62% of students\n- Product companies recruited 25% of students\n- Startups recruited 13% of students",
+    "metadata": {
+      "knowledge_type": "statistics",
+      "topic": "placement_summary",
+      "batch_year": 2024,
+      "scope": "batch_aggregate",
+      "authority": "informational",
+      "source_file": "dataset/summaries/placement_statistics_2024.txt"
+    }
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "text": "Placement Policy 2026 – Definitions:\n\nCTC (Cost to Company) includes salary, bonus, allowances, provident fund, gratuity, health insurance, RSU, and other applicable components.\n\nRecruiter categories are defined as follows:\n- IT Services Recruiters: Companies that recruit en-masse across UG, PG, and integrated programmes with CTC offered up to 5 LPA.\n- Core Recruiters and Premium IT Profiles: Companies in relevant domains offering CTC up to 10 LPA.\n- Dream Recruiters: Companies offering higher CTC compared to IT Services and Core Recruiters, with CTC greater than 10 LPA.\n- Marquee Recruiters: Companies offering CTC greater than 20 LPA, such as MAANG.\n- Unclassified Recruiters: Analytics, Edutech companies, and Teaching profiles.",
+    "metadata": {
+      "knowledge_type": "policy",
+      "topic": "definitions",
+      "batch_year": 2026,
+      "scope": "global",
+      "authority": "highest",
+      "source_file": "dataset/policy.txt"
+    }
+  },
+  {
+    "text": "Placement Policy 2026 – Eligibility Rules:\n\nTo be eligible for placements, students must satisfy the following conditions:\n- The student’s name must be recommended for placement registration by the Chairperson of the respective department.\n- The student’s name must be approved by the Center Head or Coordinator of CIR at the respective campus.\n- The student must have a minimum CGPA of 6.0 or greater.\n- The student should have no standing arrears.\n- The student must have maintained at least 80% attendance in the training sessions conducted by CIR.\n\nIn some cases, companies may allow students with lower CGPA or arrears to appear for the process, subject to permission from CIR.",
+    "metadata": {
+      "knowledge_type": "policy",
+      "topic": "eligibility_rules",
+      "batch_year": 2026,
+      "scope": "global",
+      "authority": "highest",
+      "source_file": "dataset/policy.txt"
+    }
+  },
+  {
+    "text": "Placement Policy 2026 – Department and CIR Authority:\n\nChairpersons of departments are responsible for forwarding the names of students eligible for placement to CIR, considering the following aspects:\n- Academic performance of the student\n- General behaviour inside and outside the classroom\n- Attendance\n- Any other reason deemed as disqualification or otherwise\n\nDepartments may recommend addition or deletion of student names at any time based on these considerations.",
+    "metadata": {
+      "knowledge_type": "policy",
+      "topic": "authority_and_approval",
+      "batch_year": 2026,
+      "scope": "global",
+      "authority": "highest",
+      "source_file": "dataset/policy.txt"
+    }
+  },
+  {
+    "text": "Placement Policy 2026 – Offer and Participation Rules:\n\nStudents eligible and registered with CIR for placement must necessarily appear in hiring processes. Absence from any placement process where a student is eligible and registered will be treated as lack of interest in placements and may result in permanent removal, unless permitted by CIR for special reasons.\n\nStudents selected in Core, Dream, or Marquee companies must provide written consent of joining. Declining an accepted offer at a later stage is not permitted and no justification will be accepted.",
+    "metadata": {
+      "knowledge_type": "policy",
+      "topic": "offer_rules",
+      "batch_year": 2026,
+      "scope": "global",
+      "authority": "highest",
+      "source_file": "dataset/policy.txt"
+    }
+  },
+  {
+    "text": "Placement Policy 2026 – Offer Limits and Company Categories:\n\nStudents are allowed to avail one placement offer each from IT Services Recruiters, Core Recruiters, Dream Recruiters, and Marquee Recruiters during the entire placement cycle.\n\nRestrictions on the number of companies a student may apply or appear for are as follows:\n- IT Services Recruiters: No restriction\n- Core Recruiters: Maximum 15 opportunities\n- Dream Recruiters: Maximum 7 opportunities\n- Marquee Recruiters: Maximum 3 opportunities\n- Unclassified Recruiters: No restriction\n\nStudents cannot hold more than one offer simultaneously in a progressive manner.",
+    "metadata": {
+      "knowledge_type": "policy",
+      "topic": "offer_limits",
+      "batch_year": 2026,
+      "scope": "global",
+      "authority": "highest",
+      "source_file": "dataset/policy.txt"
+    }
+  },
+  {
+    "text": "Placement Policy 2026 – Internship, Discipline, and Special Conditions:\n\nStudents receiving internship offers alone are permitted to appear for full-time employment placement processes. Internships converted to full-time employment must be communicated to CIR along with submission of the offer letter.\n\nCanvassing with company personnel will disqualify a student’s candidature. Participation in off-campus or walk-in placements without CIR facilitation is prohibited and may result in revocation of existing offers and disciplinary action.\n\nOffers may be revoked or onboarding delayed due to economic, market, or geopolitical constraints. The Additional Director Placement and Principal Director CIR reserve the right to modify placement policy in the interest of students and the institution.",
+    "metadata": {
+      "knowledge_type": "policy",
+      "topic": "internship_and_discipline",
+      "batch_year": 2026,
+      "scope": "global",
+      "authority": "highest",
+      "source_file": "dataset/policy.txt"
+    }
+  }
+]
