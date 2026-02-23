@@ -2,6 +2,7 @@ import faiss
 import pickle
 import os
 import numpy as np
+from functools import lru_cache
 from sentence_transformers import SentenceTransformer
 
 # -------- PATH SETUP --------
@@ -27,11 +28,18 @@ model = SentenceTransformer(
     device="cpu"
 )
 
+# -------- QUERY EMBEDDING CACHE --------
+
+@lru_cache(maxsize=1000)
+def get_query_embedding(query: str):
+    """Cache query embeddings to avoid recomputing for repeated queries."""
+    return model.encode([query])
+
 # -------- RETRIEVER FUNCTION --------
 
 def retrieve(
     query: str,
-    top_k: int = 10,
+    top_k: int = 7,  # Reduced from 10 to 7 for faster performance
     filters: dict | None = None
 ):
     """
@@ -43,8 +51,14 @@ def retrieve(
     }
     """
 
-    query_embedding = model.encode([query])
-    distances, indices = index.search(query_embedding, top_k)
+    query_embedding = get_query_embedding(query)
+    
+    # When filtering, search more results to ensure we get enough matches
+    # after filtering (since many results might be filtered out)
+    # Increased to 15x because some knowledge types (like statistics) have very few chunks
+    search_k = top_k * 15 if filters else top_k  # Search 15x more when filtering
+    
+    distances, indices = index.search(query_embedding, search_k)
 
     results = []
 
@@ -68,5 +82,11 @@ def retrieve(
             "text": TEXTS[idx],
             "metadata": metadata
         })
+        
+        # Stop once we have enough results
+        if len(results) >= top_k:
+            break
 
     return results
+
+

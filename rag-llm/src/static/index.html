@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlaceMate RAG Demo</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>PlaceMate</h1>
+        </header>
+
+        <main>
+            <div id="chat-container">
+                <div class="welcome-message">
+                    Hello! Ask me about placement.
+                </div>
+            </div>
+
+            <div id="metrics-panel" class="hidden">
+                <div class="metric-item"><span>Filter:</span> <span id="metric-filter">-</span></div>
+                <div class="metric-item"><span>Retrieval:</span> <span id="metric-retrieval">-</span></div>
+                <div class="metric-item"><span>Answer:</span> <span id="metric-answer">-</span></div>
+                <div class="metric-item"><span>Total:</span> <span id="metric-total">-</span></div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Type a question..." autocomplete="off">
+                <button id="send-btn">Ask</button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const metricsPanel = document.getElementById('metrics-panel');
+        const metricFilter = document.getElementById('metric-filter');
+        const metricRetrieval = document.getElementById('metric-retrieval');
+        const metricAnswer = document.getElementById('metric-answer');
+        const metricTotal = document.getElementById('metric-total');
+
+        function addMessage(text, role) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${role}-message`;
+            msgDiv.innerText = text;
+            chatContainer.appendChild(msgDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            return msgDiv;
+        }
+
+        async function handleSend() {
+            const query = userInput.value.trim();
+            if (!query) return;
+
+            userInput.value = '';
+            addMessage(query, 'user');
+
+            const aiMsgDiv = addMessage('...', 'ai');
+            aiMsgDiv.innerText = '';
+
+            metricsPanel.classList.remove('hidden');
+            metricFilter.innerText = '...';
+            metricRetrieval.innerText = '...';
+            metricAnswer.innerText = '...';
+            metricTotal.innerText = '...';
+
+            const eventSource = new EventSource(`/query?q=${encodeURIComponent(query)}`);
+
+            eventSource.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+
+                if (data.type === 'start') {
+                    metricFilter.innerText = data.metrics.filter;
+                    metricRetrieval.innerText = data.metrics.retrieval;
+                } else if (data.type === 'content') {
+                    aiMsgDiv.innerText += data.chunk;
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                } else if (data.type === 'end') {
+                    metricAnswer.innerText = data.metrics.answer;
+                    metricTotal.innerText = data.metrics.total;
+                    eventSource.close();
+                } else if (data.error) {
+                    aiMsgDiv.innerText = `Error: ${data.error}`;
+                    eventSource.close();
+                }
+            };
+
+            eventSource.onerror = () => {
+                aiMsgDiv.innerText += "\n[Connection Lost]";
+                eventSource.close();
+            };
+        }
+
+        sendBtn.addEventListener('click', handleSend);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSend();
+        });
+    </script>
+</body>
+
+</html>

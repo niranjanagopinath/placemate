@@ -1,64 +1,93 @@
-from intent_extract import extract_intent
+from filter_extract import extract_filters  # Fast keyword-based extraction (replaces LLM call)
 from retrieval import retrieve
-from cgpa_trend import analyze_cgpa_trend
-from role_history import analyze_role_history
-from package_trend import analyze_package_trend
 from answer_generate import generate_answer
-from cgpa_coverage import analyze_cgpa_coverage
+import sys
+import time
 
-
+DEBUG = True
+STREAM_RESPONSES = True  # Set to False for non-streaming responses
 
 def handle_query(query: str) -> str:
-    parsed = extract_intent(query)
+    total_start = time.time()
+    # Fast keyword-based filter extraction (no LLM call!)
+    filter_start = time.time()
+    parsed = extract_filters(query)
+    filter_time = time.time() - filter_start
+
+    if DEBUG:
+        print("\n[DEBUG] Filter Extract Output (fast):")
+        print(parsed)
+        print(f"[DEBUG] Filter extraction time: {filter_time*1000:.2f}ms")
+
 
     intent = parsed["intent"]
     company = parsed["company"]
 
-    if not intent:
-        return "Unable to understand the question."
-
     filters = {}
 
-    if company:
-        filters["company"] = company
+    if intent == "company_info":
         filters["knowledge_type"] = "company_facts"
+        if company:
+            filters["company"] = company
 
-    chunks = retrieve(query=query, filters=filters)
-
-    if not chunks:
-        return "No historical data found for this query."
-
-    if intent == "cgpa_trend":
-        analysis = analyze_cgpa_trend(chunks)
-
-    elif intent == "role_history":
-        analysis = analyze_role_history(chunks)
-
-    elif intent == "package_trend":
-        analysis = analyze_package_trend(chunks)
-
-    elif intent == "company_overview":
-        analysis = chunks  # raw summary
+    elif intent == "policy_info":
+        filters["knowledge_type"] = "policy"
 
     elif intent == "placement_statistics":
-        analysis = chunks
+        filters["knowledge_type"] = "statistics"
 
-    elif intent == "policy_explanation":
-        analysis = chunks
+    # cgpa_coverage and general_placement → no filters
 
-    elif intent == "cgpa_coverage":
-        if parsed["cgpa_threshold"] is None:
-            return "Please specify the CGPA value to analyze."
-        analysis = analyze_cgpa_coverage(
-            chunks,
-            parsed["cgpa_threshold"]
-        )
+    retrieval_start = time.time()
+    chunks = retrieve(
+        query=query,
+        filters=filters if filters else None
+    )
+    retrieval_time = time.time() - retrieval_start
+    
+    if DEBUG:
+        print(f"\n[DEBUG] Retrieved {len(chunks)} chunks")
+        print(f"[DEBUG] Retrieval time: {retrieval_time*1000:.2f}ms")
 
 
+    if not chunks:
+        return "I could not find relevant information in the available data."
+
+    context = "\n\n".join(c["text"] for c in chunks)
+
+    answer_start = time.time()
+    
+    if STREAM_RESPONSES:
+        # Streaming mode
+        if DEBUG:
+            print("\n[DEBUG] Answer Generator Output (streaming):")
+        
+        answer_parts = []
+        for chunk in generate_answer(context, query, stream=True):
+            print(chunk, end='', flush=True)
+            answer_parts.append(chunk)
+        
+        answer = ''.join(answer_parts)
+        print()  # New line after streaming
     else:
-        return "This type of question is not supported yet."
+        # Non-streaming mode
+        answer = generate_answer(context, query, stream=False)
+        
+        if DEBUG:
+            print("\n[DEBUG] Answer Generator Output:")
+            print(answer)
+    
+    answer_time = time.time() - answer_start
+    total_time = time.time() - total_start
+    
+    if DEBUG:
+        print(f"\n[DEBUG] Answer generation time: {answer_time:.2f}s")
+        print(f"[DEBUG] TOTAL TIME: {total_time:.2f}s")
+        print(f"[DEBUG] Breakdown: Filter={filter_time*1000:.0f}ms | Retrieval={retrieval_time*1000:.0f}ms | Answer={answer_time:.1f}s")
+    
+    return answer
 
-    return generate_answer(analysis, query)
+
 
 
 if __name__ == "__main__":
