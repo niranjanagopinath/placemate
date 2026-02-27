@@ -4,11 +4,11 @@ from fastapi.staticfiles import StaticFiles
 import json
 import time
 import asyncio
+import os
 from filter_extract import extract_filters
 from retrieval import retrieve
 from answer_generate import generate_answer
-
-import os
+from reasoning_logic import extract_profile, generate_reasoning
 
 app = FastAPI()
 
@@ -22,6 +22,29 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 @app.get("/")
 async def read_index():
     return FileResponse(os.path.join(STATIC_DIR, "index.html"))
+
+async def stream_reasoning_response(query: str):
+    total_start = time.time()
+    
+    # 1. Profile Inference (Fast step to understand the user)
+    inference_start = time.time()
+    profile_json = extract_profile(query)
+    inference_time = (time.time() - inference_start) * 1000
+    
+    # Send metadata
+    yield f"data: {json.dumps({'type': 'start', 'metrics': {'filter': f'{inference_time:.0f}ms', 'retrieval': 'N/A'}})}\n\n"
+
+    # 2. Reasoning Generation (Streaming)
+    reason_start = time.time()
+    for chunk in generate_reasoning(query, profile_json, stream=True):
+        yield f"data: {json.dumps({'type': 'content', 'chunk': chunk})}\n\n"
+        await asyncio.sleep(0.01)
+
+    reason_time = time.time() - reason_start
+    total_time = time.time() - total_start
+    
+    # Final metrics
+    yield f"data: {json.dumps({'type': 'end', 'metrics': {'answer': f'{reason_time:.1f}s', 'total': f'{total_time:.1f}s'}})}\n\n"
 
 async def stream_rag_response(query: str):
     total_start = time.time()
@@ -71,7 +94,9 @@ async def stream_rag_response(query: str):
     yield f"data: {json.dumps({'type': 'end', 'metrics': {'answer': f'{answer_time:.1f}s', 'total': f'{total_time:.1f}s'}})}\n\n"
 
 @app.get("/query")
-async def query_rag(q: str):
+async def query_llm(q: str, mode: str = "rag"):
+    if mode == "reasoning":
+        return StreamingResponse(stream_reasoning_response(q), media_type="text/event-stream")
     return StreamingResponse(stream_rag_response(q), media_type="text/event-stream")
 
 if __name__ == "__main__":

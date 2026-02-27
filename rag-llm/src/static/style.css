@@ -45,6 +45,35 @@ header h1 {
     color: var(--primary-color);
 }
 
+.mode-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.mode-btn {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.8rem !important;
+    background-color: #e2e8f0 !important;
+    color: #475569 !important;
+    border-radius: 2rem !important;
+    font-weight: 500 !important;
+}
+
+.mode-btn.active {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+#status-indicator {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #64748b;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
 header p {
     font-size: 0.875rem;
     color: #648b6e;

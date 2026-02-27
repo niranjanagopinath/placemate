@@ -3,14 +3,17 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 import json
 
-from placemate.dataset.summaries.prompts import (
+from prompts import (
     INFERENCE_TEMPLATE,
     REASONING_TEMPLATE,
     REASONING_SYSTEM_PROMPT
 )
 
+OLLAMA_BASE_URL = "http://localhost:11434"
+
 llm = Ollama(
-    model="llama3.1:8b",
+    model="gpt-oss:20b-cloud",
+    base_url=OLLAMA_BASE_URL,
     temperature=0.3
 )
 

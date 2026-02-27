@@ -12,18 +12,24 @@
     <div class="container">
         <header>
             <h1>PlaceMate</h1>
+            <div class="mode-toggle">
+                <button id="mode-rag" class="mode-btn active">Data Mode</button>
+                <button id="mode-reasoning" class="mode-btn">Advice Mode</button>
+            </div>
         </header>
 
         <main>
             <div id="chat-container">
                 <div class="welcome-message">
-                    Hello! Ask me about placement.
+                    Hello! Ask me about placement or seek career advice.
                 </div>
             </div>
 
+            <div id="status-indicator" class="hidden">Thinking...</div>
+
             <div id="metrics-panel" class="hidden">
-                <div class="metric-item"><span>Filter:</span> <span id="metric-filter">-</span></div>
-                <div class="metric-item"><span>Retrieval:</span> <span id="metric-retrieval">-</span></div>
+                <div class="metric-item"><span id="metric-label-1">Filter:</span> <span id="metric-filter">-</span></div>
+                <div class="metric-item"><span id="metric-label-2">Retrieval:</span> <span id="metric-retrieval">-</span></div>
                 <div class="metric-item"><span>Answer:</span> <span id="metric-answer">-</span></div>
                 <div class="metric-item"><span>Total:</span> <span id="metric-total">-</span></div>
             </div>
@@ -46,6 +52,30 @@
         const metricRetrieval = document.getElementById('metric-retrieval');
         const metricAnswer = document.getElementById('metric-answer');
         const metricTotal = document.getElementById('metric-total');
+        const statusIndicator = document.getElementById('status-indicator');
+        const ragBtn = document.getElementById('mode-rag');
+        const reasoningBtn = document.getElementById('mode-reasoning');
+
+        let currentMode = 'rag';
+
+        // Auto-routing keywords
+        const reasoningKeywords = ['improve', 'how to', 'strategy', 'prepare', 'advice', 'career', 'study', 'focus', 'should i'];
+
+        ragBtn.onclick = () => {
+            currentMode = 'rag';
+            ragBtn.classList.add('active');
+            reasoningBtn.classList.remove('active');
+            document.getElementById('metric-label-1').innerText = 'Filter:';
+            document.getElementById('metric-label-2').innerText = 'Retrieval:';
+        };
+
+        reasoningBtn.onclick = () => {
+            currentMode = 'reasoning';
+            reasoningBtn.classList.add('active');
+            ragBtn.classList.remove('active');
+            document.getElementById('metric-label-1').innerText = 'Inference:';
+            document.getElementById('metric-label-2').innerText = 'Knowledge:';
+        };
 
         function addMessage(text, role) {
             const msgDiv = document.createElement('div');
@@ -60,11 +90,19 @@
             const query = userInput.value.trim();
             if (!query) return;
 
+            // Auto-detect reasoning if in RAG mode but query sounds like advice
+            let activeMode = currentMode;
+            if (activeMode === 'rag' && reasoningKeywords.some(k => query.toLowerCase().includes(k))) {
+                console.log("Auto-routing to Reasoning LLM...");
+                activeMode = 'reasoning';
+            }
+
             userInput.value = '';
             addMessage(query, 'user');
 
-            const aiMsgDiv = addMessage('...', 'ai');
-            aiMsgDiv.innerText = '';
+            const aiMsgDiv = addMessage('', 'ai');
+            statusIndicator.classList.remove('hidden');
+            statusIndicator.innerText = activeMode === 'reasoning' ? 'Analyzing profile & reasoning...' : 'Retrieving facts...';
 
             metricsPanel.classList.remove('hidden');
             metricFilter.innerText = '...';
@@ -72,12 +110,13 @@
             metricAnswer.innerText = '...';
             metricTotal.innerText = '...';
 
-            const eventSource = new EventSource(`/query?q=${encodeURIComponent(query)}`);
+            const eventSource = new EventSource(`/query?q=${encodeURIComponent(query)}&mode=${activeMode}`);
 
             eventSource.onmessage = (event) => {
                 const data = JSON.parse(event.data);
 
                 if (data.type === 'start') {
+                    statusIndicator.classList.add('hidden');
                     metricFilter.innerText = data.metrics.filter;
                     metricRetrieval.innerText = data.metrics.retrieval;
                 } else if (data.type === 'content') {
@@ -89,6 +128,7 @@
                     eventSource.close();
                 } else if (data.error) {
                     aiMsgDiv.innerText = `Error: ${data.error}`;
+                    statusIndicator.classList.add('hidden');
                     eventSource.close();
                 }
             };
