@@ -2,146 +2,792 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlaceMate RAG Demo</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlaceMate — AI Placement Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ─── Variables ────────────────────────────────────────── */
+        :root {
+            --bg: #09090b;
+            --panel: #111114;
+            --surface: #18181c;
+            --surface-2: #1f1f25;
+            --border: #27272f;
+            --border-soft: #1f1f27;
+            --accent: #6366f1;
+            --accent-2: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.18);
+            --success: #22c55e;
+            --text: #f4f4f5;
+            --text-2: #a1a1aa;
+            --text-3: #52525b;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-xs: 6px;
+            --radius-pill: 999px;
+            --font: 'DM Sans', system-ui, sans-serif;
+        }
+
+        /* ─── Reset ─────────────────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: var(--font);
+            cursor: pointer;
+            border: none;
+        }
+
+        /* ─── App shell ─────────────────────────────────────────── */
+        .app {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* ─── Top nav ───────────────────────────────────────────── */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.75rem;
+            height: 58px;
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .brand-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .brand-name {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .brand-tag {
+            font-size: 0.6875rem;
+            font-weight: 500;
+            color: var(--text-3);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 2px 7px;
+            border-radius: var(--radius-pill);
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        /* Mode toggle */
+        .mode-toggle {
+            display: flex;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .mode-btn {
+            padding: 0.35rem 0.875rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            background: transparent;
+            color: var(--text-2);
+            border-radius: var(--radius-pill);
+            transition: all 0.15s ease;
+            white-space: nowrap;
+            line-height: 1.4;
+        }
+
+        .mode-btn.active {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.35);
+        }
+
+        .mode-btn:hover:not(.active) {
+            color: var(--text);
+            background: var(--surface-2);
+        }
+
+        /* Contribute link */
+        .contribute-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.875rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-2);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            transition: all 0.15s ease;
+        }
+
+        .contribute-link:hover {
+            color: var(--text);
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        /* ─── Mode banner ───────────────────────────────────────── */
+        .mode-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1rem;
+            background: var(--panel);
+            border-bottom: 1px solid var(--border-soft);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-3);
+            flex-shrink: 0;
+            transition: all 0.25s ease;
+        }
+
+        .mode-banner .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        /* ─── Chat area ─────────────────────────────────────────── */
+        .chat-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            min-height: 0;
+        }
+
+        /* Welcome state */
+        .welcome {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .welcome-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.25);
+        }
+
+        .welcome h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .welcome p {
+            font-size: 0.9rem;
+            color: var(--text-2);
+            max-width: 380px;
+            line-height: 1.65;
+        }
+
+        /* Suggestion chips */
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            max-width: 560px;
+        }
+
+        .chip {
+            padding: 0.45rem 0.9rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-2);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .chip:hover {
+            color: var(--text);
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        /* ─── Messages ──────────────────────────────────────────── */
+        .msg-row {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 100%;
+        }
+
+        .msg-row.user {
+            flex-direction: row-reverse;
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .avatar.ai {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #fff;
+        }
+
+        .avatar.user {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            color: var(--text-2);
+        }
+
+        .bubble {
+            padding: 0.85rem 1.1rem;
+            border-radius: var(--radius);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-width: calc(100% - 42px);
+        }
+
+        .bubble.ai {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-top-left-radius: var(--radius-xs);
+        }
+
+        .bubble.user {
+            background: var(--accent);
+            color: #fff;
+            border-top-right-radius: var(--radius-xs);
+            margin-left: auto;
+        }
+
+        /* Typing indicator */
+        .typing {
+            display: flex;
+            gap: 4px;
+            padding: 0.85rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            border-top-left-radius: var(--radius-xs);
+            width: fit-content;
+        }
+
+        .typing span {
+            width: 6px;
+            height: 6px;
+            background: var(--text-3);
+            border-radius: 50%;
+            animation: bounce 1.2s infinite;
+        }
+
+        .typing span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* ─── Metrics row ───────────────────────────────────────── */
+        .metrics-row {
+            display: none;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0 1.75rem 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .metrics-row.visible {
+            display: flex;
+        }
+
+        .metric-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.25rem 0.7rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            font-size: 0.7rem;
+            color: var(--text-3);
+        }
+
+        .metric-pill strong {
+            color: var(--text-2);
+            font-weight: 600;
+        }
+
+        .metric-divider {
+            width: 1px;
+            height: 12px;
+            background: var(--border);
+        }
+
+        /* ─── Input bar ─────────────────────────────────────────── */
+        .input-bar {
+            flex-shrink: 0;
+            padding: 0 1.75rem 1.5rem;
+        }
+
+        .input-wrap {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0.6rem 0.6rem 0.6rem 1.1rem;
+            transition: border-color 0.18s, box-shadow 0.18s;
+        }
+
+        .input-wrap:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        #user-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text);
+            font-size: 0.9375rem;
+            font-family: var(--font);
+            resize: none;
+            height: 24px;
+            max-height: 140px;
+            line-height: 1.5;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        #user-input::placeholder {
+            color: var(--text-3);
+        }
+
+        #send-btn {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s, transform 0.1s;
+            color: #fff;
+        }
+
+        #send-btn:hover {
+            background: #4f52db;
+        }
+
+        #send-btn:active {
+            transform: scale(0.93);
+        }
+
+        #send-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ─── Disclaimer ────────────────────────────────────────── */
+        .disclaimer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-3);
+            margin-top: 0.5rem;
+        }
+
+        /* ─── Scrollbar ─────────────────────────────────────────── */
+        .chat-area::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .chat-area::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-area::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 99px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>PlaceMate</h1>
-            <div class="mode-toggle">
-                <button id="mode-rag" class="mode-btn active">Data Mode</button>
-                <button id="mode-reasoning" class="mode-btn">Advice Mode</button>
-            </div>
-        </header>
+    <div class="app">
 
-        <main>
-            <div id="chat-container">
-                <div class="welcome-message">
-                    Hello! Ask me about placement or seek career advice.
+        <!-- Top navigation bar -->
+        <nav class="topbar">
+            <div class="brand">
+                <div class="brand-icon">P</div>
+                <span class="brand-name">PlaceMate</span>
+                <span class="brand-tag">Beta</span>
+            </div>
+
+            <div class="topbar-right">
+                <div class="mode-toggle">
+                    <button id="mode-rag" class="mode-btn active">Data Mode</button>
+                    <button id="mode-reasoning" class="mode-btn">Advice Mode</button>
+                </div>
+                <a href="/contribute" class="contribute-link">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <line x1="6" y1="1" x2="6" y2="11" />
+                        <line x1="1" y1="6" x2="11" y2="6" />
+                    </svg>
+                    Contribute
+                </a>
+            </div>
+        </nav>
+
+        <!-- Mode status banner -->
+        <div class="mode-banner" id="mode-banner">
+            <span class="dot"></span>
+            <span id="banner-text">Data Mode — Retrieval-Augmented Generation from placement records</span>
+        </div>
+
+        <!-- Chat messages -->
+        <div class="chat-area" id="chat-area">
+            <div class="welcome" id="welcome-screen">
+                <div class="welcome-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.75"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" />
+                        <line x1="8" y1="21" x2="16" y2="21" />
+                        <line x1="12" y1="17" x2="12" y2="21" />
+                    </svg>
+                </div>
+                <h2>Ask me anything about placements</h2>
+                <p>Get instant answers from our placement database — company criteria, packages, selection rounds, and
+                    more. Or switch to Advice Mode for personalised career guidance.</p>
+                <div class="chips">
+                    <button class="chip" onclick="fillInput('What companies visited in 2024?')">Companies in
+                        2024</button>
+                    <button class="chip" onclick="fillInput('What is the minimum CGPA for Amazon?')">Amazon CGPA
+                        cutoff</button>
+                    <button class="chip" onclick="fillInput('What is the highest package offered?')">Highest
+                        package</button>
+                    <button class="chip" onclick="fillInput('How should I prepare for product companies?')">Preparation
+                        tips</button>
+                    <button class="chip" onclick="fillInput('What are the selection rounds for Google?')">Google
+                        rounds</button>
+                    <button class="chip"
+                        onclick="fillInput('What is the attendance requirement for placements?')">Attendance
+                        policy</button>
                 </div>
             </div>
+        </div>
 
-            <div id="status-indicator" class="hidden">Thinking...</div>
-
-            <div id="metrics-panel" class="hidden">
-                <div class="metric-item"><span id="metric-label-1">Filter:</span> <span id="metric-filter">-</span></div>
-                <div class="metric-item"><span id="metric-label-2">Retrieval:</span> <span id="metric-retrieval">-</span></div>
-                <div class="metric-item"><span>Answer:</span> <span id="metric-answer">-</span></div>
-                <div class="metric-item"><span>Total:</span> <span id="metric-total">-</span></div>
+        <!-- Metrics row -->
+        <div class="metrics-row" id="metrics-row">
+            <div class="metric-pill"><span id="metric-label-1">Filter</span>&nbsp;<strong id="metric-filter">—</strong>
             </div>
-        </main>
+            <div class="metric-divider"></div>
+            <div class="metric-pill"><span id="metric-label-2">Retrieval</span>&nbsp;<strong
+                    id="metric-retrieval">—</strong></div>
+            <div class="metric-divider"></div>
+            <div class="metric-pill">Answer&nbsp;<strong id="metric-answer">—</strong></div>
+            <div class="metric-divider"></div>
+            <div class="metric-pill">Total&nbsp;<strong id="metric-total">—</strong></div>
+        </div>
 
-        <footer>
-            <div class="input-area">
-                <input type="text" id="user-input" placeholder="Type a question..." autocomplete="off">
-                <button id="send-btn">Ask</button>
+        <!-- Input bar -->
+        <div class="input-bar">
+            <div class="input-wrap">
+                <input type="text" id="user-input" placeholder="Ask about placements or get career advice…"
+                    autocomplete="off" />
+                <button id="send-btn" title="Send">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="22" y1="2" x2="11" y2="13" />
+                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                    </svg>
+                </button>
             </div>
-        </footer>
-    </div>
+            <p class="disclaimer">PlaceMate may produce inaccurate results. Verify critical information independently.
+            </p>
+        </div>
+
+    </div><!-- /.app -->
 
     <script>
-        const chatContainer = document.getElementById('chat-container');
+        const chatArea = document.getElementById('chat-area');
+        const welcomeScreen = document.getElementById('welcome-screen');
         const userInput = document.getElementById('user-input');
         const sendBtn = document.getElementById('send-btn');
-        const metricsPanel = document.getElementById('metrics-panel');
+        const metricsRow = document.getElementById('metrics-row');
         const metricFilter = document.getElementById('metric-filter');
         const metricRetrieval = document.getElementById('metric-retrieval');
         const metricAnswer = document.getElementById('metric-answer');
         const metricTotal = document.getElementById('metric-total');
-        const statusIndicator = document.getElementById('status-indicator');
         const ragBtn = document.getElementById('mode-rag');
         const reasoningBtn = document.getElementById('mode-reasoning');
+        const bannerText = document.getElementById('banner-text');
+        const label1 = document.getElementById('metric-label-1');
+        const label2 = document.getElementById('metric-label-2');
 
         let currentMode = 'rag';
+        let isStreaming = false;
 
-        // Auto-routing keywords
-        const reasoningKeywords = ['improve', 'how to', 'strategy', 'prepare', 'advice', 'career', 'study', 'focus', 'should i'];
+        const reasoningKeywords = ['improve', 'how to', 'strategy', 'prepare', 'advice', 'career', 'study', 'focus', 'should i', 'tips', 'roadmap'];
 
-        ragBtn.onclick = () => {
-            currentMode = 'rag';
-            ragBtn.classList.add('active');
-            reasoningBtn.classList.remove('active');
-            document.getElementById('metric-label-1').innerText = 'Filter:';
-            document.getElementById('metric-label-2').innerText = 'Retrieval:';
-        };
+        // ── Mode buttons ──────────────────────────────────────────
+        ragBtn.onclick = () => switchMode('rag');
+        reasoningBtn.onclick = () => switchMode('reasoning');
 
-        reasoningBtn.onclick = () => {
-            currentMode = 'reasoning';
-            reasoningBtn.classList.add('active');
-            ragBtn.classList.remove('active');
-            document.getElementById('metric-label-1').innerText = 'Inference:';
-            document.getElementById('metric-label-2').innerText = 'Knowledge:';
-        };
-
-        function addMessage(text, role) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `message ${role}-message`;
-            msgDiv.innerText = text;
-            chatContainer.appendChild(msgDiv);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-            return msgDiv;
+        function switchMode(mode) {
+            currentMode = mode;
+            ragBtn.classList.toggle('active', mode === 'rag');
+            reasoningBtn.classList.toggle('active', mode === 'reasoning');
+            if (mode === 'rag') {
+                bannerText.textContent = 'Data Mode — Retrieval-Augmented Generation from placement records';
+                label1.textContent = 'Filter'; label2.textContent = 'Retrieval';
+            } else {
+                bannerText.textContent = 'Advice Mode — Personalised career guidance powered by reasoning LLM';
+                label1.textContent = 'Inference'; label2.textContent = 'Knowledge';
+            }
         }
 
+        // ── Chip fill ─────────────────────────────────────────────
+        function fillInput(text) {
+            userInput.value = text;
+            userInput.focus();
+        }
+
+        // ── Add message row ───────────────────────────────────────
+        function addMessage(text, role) {
+            if (welcomeScreen.parentNode) welcomeScreen.remove();
+
+            const row = document.createElement('div');
+            row.className = `msg-row ${role}`;
+
+            const avatarEl = document.createElement('div');
+            avatarEl.className = `avatar ${role === 'ai' ? 'ai' : 'user'}`;
+            avatarEl.textContent = role === 'ai' ? 'P' : 'U';
+
+            const bubble = document.createElement('div');
+            bubble.className = `bubble ${role === 'ai' ? 'ai' : 'user'}`;
+            bubble.textContent = text;
+
+            row.appendChild(avatarEl);
+            row.appendChild(bubble);
+            chatArea.appendChild(row);
+            chatArea.scrollTop = chatArea.scrollHeight;
+            return bubble;
+        }
+
+        // ── Typing indicator ──────────────────────────────────────
+        function showTyping() {
+            if (welcomeScreen.parentNode) welcomeScreen.remove();
+            const row = document.createElement('div');
+            row.className = 'msg-row ai';
+            row.id = 'typing-indicator';
+
+            const av = document.createElement('div');
+            av.className = 'avatar ai';
+            av.textContent = 'P';
+
+            const ind = document.createElement('div');
+            ind.className = 'typing';
+            ind.innerHTML = '<span></span><span></span><span></span>';
+
+            row.appendChild(av);
+            row.appendChild(ind);
+            chatArea.appendChild(row);
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+
+        function removeTyping() {
+            const el = document.getElementById('typing-indicator');
+            if (el) el.remove();
+        }
+
+        // ── Send ──────────────────────────────────────────────────
         async function handleSend() {
             const query = userInput.value.trim();
-            if (!query) return;
+            if (!query || isStreaming) return;
 
-            // Auto-detect reasoning if in RAG mode but query sounds like advice
             let activeMode = currentMode;
             if (activeMode === 'rag' && reasoningKeywords.some(k => query.toLowerCase().includes(k))) {
-                console.log("Auto-routing to Reasoning LLM...");
                 activeMode = 'reasoning';
+                if (currentMode === 'rag') switchMode('reasoning');
             }
 
             userInput.value = '';
+            isStreaming = true;
+            sendBtn.style.opacity = '0.5';
+
             addMessage(query, 'user');
+            showTyping();
 
-            const aiMsgDiv = addMessage('', 'ai');
-            statusIndicator.classList.remove('hidden');
-            statusIndicator.innerText = activeMode === 'reasoning' ? 'Analyzing profile & reasoning...' : 'Retrieving facts...';
+            metricsRow.classList.add('visible');
+            metricFilter.textContent = '…';
+            metricRetrieval.textContent = '…';
+            metricAnswer.textContent = '…';
+            metricTotal.textContent = '…';
 
-            metricsPanel.classList.remove('hidden');
-            metricFilter.innerText = '...';
-            metricRetrieval.innerText = '...';
-            metricAnswer.innerText = '...';
-            metricTotal.innerText = '...';
+            const es = new EventSource(`/query?q=${encodeURIComponent(query)}&mode=${activeMode}`);
+            let aiBubble = null;
 
-            const eventSource = new EventSource(`/query?q=${encodeURIComponent(query)}&mode=${activeMode}`);
-
-            eventSource.onmessage = (event) => {
+            es.onmessage = (event) => {
                 const data = JSON.parse(event.data);
 
                 if (data.type === 'start') {
-                    statusIndicator.classList.add('hidden');
-                    metricFilter.innerText = data.metrics.filter;
-                    metricRetrieval.innerText = data.metrics.retrieval;
+                    removeTyping();
+                    aiBubble = addMessage('', 'ai');
+                    metricFilter.textContent = data.metrics.filter;
+                    metricRetrieval.textContent = data.metrics.retrieval;
+
                 } else if (data.type === 'content') {
-                    aiMsgDiv.innerText += data.chunk;
-                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                    if (!aiBubble) { removeTyping(); aiBubble = addMessage('', 'ai'); }
+                    aiBubble.textContent += data.chunk;
+                    chatArea.scrollTop = chatArea.scrollHeight;
+
                 } else if (data.type === 'end') {
-                    metricAnswer.innerText = data.metrics.answer;
-                    metricTotal.innerText = data.metrics.total;
-                    eventSource.close();
+                    metricAnswer.textContent = data.metrics.answer;
+                    metricTotal.textContent = data.metrics.total;
+                    es.close();
+                    isStreaming = false;
+                    sendBtn.style.opacity = '';
+
                 } else if (data.error) {
-                    aiMsgDiv.innerText = `Error: ${data.error}`;
-                    statusIndicator.classList.add('hidden');
-                    eventSource.close();
+                    removeTyping();
+                    if (!aiBubble) aiBubble = addMessage('', 'ai');
+                    aiBubble.textContent = `Error: ${data.error}`;
+                    es.close();
+                    isStreaming = false;
+                    sendBtn.style.opacity = '';
                 }
             };
 
-            eventSource.onerror = () => {
-                aiMsgDiv.innerText += "\n[Connection Lost]";
-                eventSource.close();
+            es.onerror = () => {
+                removeTyping();
+                if (!aiBubble) aiBubble = addMessage('', 'ai');
+                aiBubble.textContent += '\n[Connection lost]';
+                es.close();
+                isStreaming = false;
+                sendBtn.style.opacity = '';
             };
         }
 
         sendBtn.addEventListener('click', handleSend);
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSend();
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
         });
     </script>
 </body>

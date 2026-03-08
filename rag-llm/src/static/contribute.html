@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribute — PlaceMate</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ---- Contribute page overrides ---- */
+        body {
+            min-height: 100vh;
+            height: auto;
+            overflow-y: auto;
+            display: block;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', system-ui, sans-serif;
+        }
+
+        .page-wrapper {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+        }
+
+        /* ---- Top nav ---- */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2.5rem;
+        }
+
+        .top-nav h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            padding: 0.4rem 0.9rem;
+            transition: all 0.18s ease;
+        }
+
+        .back-link:hover {
+            color: var(--text);
+            border-color: var(--border-hover);
+        }
+
+        /* ---- Status box ---- */
+        .status-box {
+            display: none;
+            padding: 0.875rem 1.1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-box.success {
+            background-color: var(--success-bg);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+
+        .status-box.error {
+            background-color: var(--error-bg);
+            border: 1px solid var(--error);
+            color: var(--error);
+        }
+
+        /* ---- Section card ---- */
+        .form-section {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-num {
+            width: 26px;
+            height: 26px;
+            background-color: var(--accent-light);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-header h2 {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+
+        /* ---- Grid ---- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* ---- Form field ---- */
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .field label {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.01em;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            padding: 0.7rem 0.875rem;
+            background-color: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.18s ease, box-shadow 0.18s ease;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .field select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237b7f96' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.875rem center;
+            padding-right: 2.25rem;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: var(--text-dim);
+        }
+
+        .field textarea {
+            resize: vertical;
+            min-height: 130px;
+            line-height: 1.65;
+        }
+
+        /* ---- Hint block ---- */
+        .hint-block {
+            background-color: var(--surface-2);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 0.75rem 1rem;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .hint-block strong {
+            color: var(--text);
+        }
+
+        /* ---- Submit button ---- */
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 0.9rem;
+            background-color: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background-color 0.18s ease, transform 0.1s ease;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.99);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ---- Select option color fix ---- */
+        option {
+            background-color: var(--surface-2);
+            color: var(--text);
+        }
+
+        /* ---- Scrollbar ---- */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 99px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <!-- Top nav -->
+        <nav class="top-nav">
+            <h1>PlaceMate</h1>
+            <a href="/" class="back-link">&#8592; Back to Chat</a>
+        </nav>
+
+        <!-- Page heading -->
+        <div style="margin-bottom: 2rem;">
+            <h2 style="font-size: 1.5rem; font-weight: 700; letter-spacing: -0.025em; margin-bottom: 0.35rem;">Share
+                Your Placement Experience</h2>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Help juniors prepare better by contributing your
+                placement story. All fields are required.</p>
+        </div>
+
+        <!-- Status message -->
+        <div id="status-message" class="status-box"></div>
+
+        <form id="contribute-form">
+
+            <!-- Section 1: Student Profile -->
+            <div class="form-section">
+                <div class="section-header">
+                    <div class="section-num">1</div>
+                    <h2>Student Profile</h2>
+                </div>
+                <div class="grid-2">
+                    <div class="field">
+                        <label for="year">Year of Passing</label>
+                        <input type="number" id="year" name="year" required placeholder="e.g. 2025" min="2000"
+                            max="2100">
+                    </div>
+                    <div class="field">
+                        <label for="branch">Branch</label>
+                        <input type="text" id="branch" name="branch" required placeholder="e.g. CSE">
+                    </div>
+                    <div class="field">
+                        <label for="cgpa">CGPA</label>
+                        <input type="number" id="cgpa" name="cgpa" required step="0.01" min="0" max="10"
+                            placeholder="e.g. 8.50">
+                    </div>
+                    <div class="field">
+                        <label for="college_tier">College Tier</label>
+                        <select id="college_tier" name="college_tier" required>
+                            <option value="">Select tier</option>
+                            <option value="1">Tier 1</option>
+                            <option value="2">Tier 2</option>
+                            <option value="3">Tier 3</option>
+                        </select>
+                    </div>
+                    <div class="field full-width">
+                        <label for="skills">Skills</label>
+                        <input type="text" id="skills" name="skills" required
+                            placeholder="e.g. Python, React, C++, Machine Learning (comma-separated)">
+                    </div>
+                    <div class="field">
+                        <label for="num_projects">Number of Projects</label>
+                        <input type="number" id="num_projects" name="num_projects" required min="0"
+                            placeholder="e.g. 3">
+                    </div>
+                    <div class="field">
+                        <label for="num_internships">Number of Internships</label>
+                        <input type="number" id="num_internships" name="num_internships" required min="0"
+                            placeholder="e.g. 1">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Placement Details -->
+            <div class="form-section">
+                <div class="section-header">
+                    <div class="section-num">2</div>
+                    <h2>Placement Details</h2>
+                </div>
+                <div class="grid-2">
+                    <div class="field">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company" required placeholder="e.g. Google">
+                    </div>
+                    <div class="field">
+                        <label for="role">Role</label>
+                        <input type="text" id="role" name="role" required placeholder="e.g. Software Engineer">
+                    </div>
+                    <div class="field">
+                        <label for="package_lpa">Package (LPA)</label>
+                        <input type="number" id="package_lpa" name="package_lpa" required step="0.1" min="0"
+                            placeholder="e.g. 25.0">
+                    </div>
+                    <div class="field">
+                        <label for="placement_type">Placement Type</label>
+                        <select id="placement_type" name="placement_type" required>
+                            <option value="">Select type</option>
+                            <option value="Internship">Internship</option>
+                            <option value="Fulltime">Full-time</option>
+                            <option value="PPO">PPO</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="interview_rounds">Number of Interview Rounds</label>
+                        <input type="number" id="interview_rounds" name="interview_rounds" required min="1"
+                            placeholder="e.g. 4">
+                    </div>
+                    <div class="field">
+                        <label for="interview_focus">Interview Focus</label>
+                        <select id="interview_focus" name="interview_focus" required>
+                            <option value="">Select focus</option>
+                            <option value="DSA">DSA</option>
+                            <option value="System Design">System Design</option>
+                            <option value="Core">Core (OS, DBMS, CN)</option>
+                            <option value="Behavioral">Behavioral / HR</option>
+                            <option value="Mixed">Mixed</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Preparation Strategy -->
+            <div class="form-section">
+                <div class="section-header">
+                    <div class="section-num">3</div>
+                    <h2>Preparation Strategy</h2>
+                </div>
+                <div class="grid-2">
+                    <div class="field">
+                        <label for="dsa_level">DSA Level</label>
+                        <select id="dsa_level" name="dsa_level" required>
+                            <option value="">Select level</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="platforms_used">Platforms Used</label>
+                        <input type="text" id="platforms_used" name="platforms_used" required
+                            placeholder="e.g. LeetCode, Codeforces">
+                    </div>
+                    <div class="field">
+                        <label for="questions_solved">Approx. Questions Solved</label>
+                        <input type="number" id="questions_solved" name="questions_solved" required min="0"
+                            placeholder="e.g. 400">
+                    </div>
+                    <div class="field">
+                        <label for="prep_duration_months">Preparation Duration (months)</label>
+                        <input type="number" id="prep_duration_months" name="prep_duration_months" required min="1"
+                            placeholder="e.g. 6">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Advice -->
+            <div class="form-section">
+                <div class="section-header">
+                    <div class="section-num">4</div>
+                    <h2>Advice for Juniors</h2>
+                </div>
+                <div class="field full-width">
+                    <div class="hint-block">
+                        <strong>Suggested template — feel free to edit:</strong><br>
+                        Mistakes to avoid &nbsp;·&nbsp; Resources that helped &nbsp;·&nbsp; Time management strategy
+                        &nbsp;·&nbsp; General tips
+                    </div>
+                    <textarea id="advice" name="advice" required>Mistakes to avoid: 
+Top resources that helped me: 
+Time management strategy: 
+General tips for juniors: </textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">Submit Experience</button>
+
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('contribute-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const statusBox = document.getElementById('status-message');
+
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+            statusBox.style.display = 'none';
+            statusBox.className = 'status-box';
+
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+
+            // Parse numerics
+            data.year = parseInt(data.year, 10);
+            data.cgpa = parseFloat(data.cgpa);
+            data.college_tier = parseInt(data.college_tier, 10);
+            data.num_projects = parseInt(data.num_projects, 10);
+            data.num_internships = parseInt(data.num_internships, 10);
+            data.package_lpa = parseFloat(data.package_lpa);
+            data.interview_rounds = parseInt(data.interview_rounds, 10);
+            data.questions_solved = parseInt(data.questions_solved, 10);
+            data.prep_duration_months = parseInt(data.prep_duration_months, 10);
+
+            try {
+                const response = await fetch('/api/contribute', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    statusBox.classList.add('success');
+                    statusBox.textContent = result.message || 'Experience submitted successfully!';
+                    statusBox.style.display = 'block';
+                    e.target.reset();
+                    document.getElementById('advice').value =
+                        "Mistakes to avoid: \nTop resources that helped me: \nTime management strategy: \nGeneral tips for juniors: ";
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    statusBox.classList.add('error');
+                    statusBox.textContent = result.error || 'Submission failed. Please try again.';
+                    statusBox.style.display = 'block';
+                }
+            } catch {
+                statusBox.classList.add('error');
+                statusBox.textContent = 'Network error. Please check your connection.';
+                statusBox.style.display = 'block';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Submit Experience';
+                statusBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    </script>
+</body>
+
+</html>

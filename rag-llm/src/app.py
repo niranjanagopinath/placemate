@@ -1,16 +1,45 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import StreamingResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 import json
 import time
 import asyncio
 import os
+import csv
 from filter_extract import extract_filters
 from retrieval import retrieve_async
 from answer_generate import generate_answer
 from reasoning_logic import extract_profile, generate_reasoning
 
 app = FastAPI()
+
+class ContributionData(BaseModel):
+    # Student Profile
+    year: int
+    branch: str
+    cgpa: float
+    college_tier: int
+    skills: str
+    num_projects: int
+    num_internships: int
+    
+    # Placement Details
+    company: str
+    role: str
+    package_lpa: float
+    placement_type: str
+    interview_rounds: int
+    interview_focus: str
+    
+    # Preparation Strategy
+    dsa_level: str
+    platforms_used: str
+    questions_solved: int
+    prep_duration_months: int
+    
+    # Advice
+    advice: str
 
 # Get absolute path to the directory where app.py is located
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -22,6 +51,10 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 @app.get("/")
 async def read_index():
     return FileResponse(os.path.join(STATIC_DIR, "index.html"))
+
+@app.get("/contribute")
+async def read_contribute():
+    return FileResponse(os.path.join(STATIC_DIR, "contribute.html"))
 
 async def stream_reasoning_response(query: str):
     total_start = time.time()
@@ -99,6 +132,63 @@ async def query_llm(q: str, mode: str = "rag"):
         return StreamingResponse(stream_reasoning_response(q), media_type="text/event-stream")
     return StreamingResponse(stream_rag_response(q), media_type="text/event-stream")
 
+@app.post("/api/contribute")
+async def add_contribution(data: ContributionData):
+    try:
+        # Determine paths
+        # Assuming app.py is in rag-llm/src
+        src_dir = os.path.dirname(os.path.abspath(__file__))
+        rag_llm_dir = os.path.dirname(src_dir)
+        placemate_dir = os.path.dirname(rag_llm_dir)
+        dataset_dir = os.path.join(placemate_dir, "dataset", "structured")
+        
+        os.makedirs(dataset_dir, exist_ok=True)
+        
+        file_path = os.path.join(dataset_dir, "student_experiences.csv")
+        file_exists = os.path.isfile(file_path)
+        
+        # Determine the next contribution id
+        contribution_id = "EXP001"
+        if file_exists:
+            with open(file_path, "r", encoding="utf-8") as f:
+                reader = csv.reader(f)
+                rows = list(reader)
+                if len(rows) > 1:
+                    last_row = rows[-1]
+                    if last_row and last_row[0].startswith("EXP"):
+                        last_id = last_row[0]
+                        if last_id[3:].isdigit():
+                            next_num = int(last_id[3:]) + 1
+                            contribution_id = f"EXP{next_num:03d}"
+        
+        # Append data to the CSV file
+        with open(file_path, "a", newline="", encoding="utf-8") as csvfile:
+            writer = csv.writer(csvfile)
+            headers = [
+                "contribution_id", "year", "branch", "cgpa", "college_tier", "skills",
+                "num_projects", "num_internships", "company", "role", "package_lpa",
+                "placement_type", "interview_rounds", "interview_focus", "dsa_level",
+                "platforms_used", "questions_solved", "prep_duration_months", "advice"
+            ]
+            
+            if not file_exists:
+                writer.writerow(headers)
+            
+            writer.writerow([
+                contribution_id,
+                data.year, data.branch, data.cgpa, data.college_tier, data.skills,
+                data.num_projects, data.num_internships, data.company, data.role,
+                data.package_lpa, data.placement_type, data.interview_rounds,
+                data.interview_focus, data.dsa_level, data.platforms_used,
+                data.questions_solved, data.prep_duration_months, data.advice
+            ])
+            
+        return {"message": f"Successfully added placement experience for {data.company}.", "contribution_id": contribution_id}
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return {"error": str(e)}
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=9000)
